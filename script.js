@@ -109,7 +109,7 @@ let packingList = [
 
 const hotel = {
   name: "蓼科グランドホテル滝の湯",
-  image: "images/hotel.jpeg",
+  image: "hotel.jpeg",
   rating: 4.5,
   price: 13000,
   checkIn: "15:00",
@@ -478,7 +478,7 @@ async function loadSpots() {
         description: "ボート・遊覧船・遊歩道",
         recommendation: 5,
         map: "https://maps.app.goo.gl/yEXw7VpbKLQssge28?g_st=ic",
-        image: "",
+        image: "shirakabako.jpeg",
         votes: 0,
       },
       {
@@ -487,7 +487,7 @@ async function loadSpots() {
         description: "東山魁夷の作品のモデルになった池",
         recommendation: 5,
         map: "https://maps.app.goo.gl/oySZK25KzSkiV2jg6?g_st=ic",
-        image: "",
+        image: "misyakaike.jpeg",
         votes: 0,
       },
     ]);
