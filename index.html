@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>家族旅行しおり</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>🚗 家族旅行</h1>
+      <p id="countdown">旅行まであと○日</p>
+    </header>
+
+    <section class="card">
+      <h2>🕘 次の予定</h2>
+
+      <div id="next-schedule">読み込み中...</div>
+    </section>
+
+    <main>
+      <section class="card">
+        <h2>📅 スケジュール</h2>
+        <div id="schedule-list"></div>
+
+        <!-- ベタガキ方式だからあまり使わないらしい<p>ここに旅行の日程を表示します。</p> -->
+      </section>
+
+      <section class="card">
+        <h2>📍 行きたい場所（投票）</h2>
+        <div id="spot-list"></div>
+        <hr />
+        <!-- 観光地追加フォーム -->
+        <input
+          id="spot-name"
+          type="text"
+          placeholder="場所の名前（例：〇〇牧場）"
+          style="
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          "
+        />
+        <input
+          id="spot-desc"
+          type="text"
+          placeholder="メモ（例：ソフトクリーム食べる）"
+          style="
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          "
+        />
+
+        <!-- 👇 追加：マップURLと画像選択 -->
+        <input
+          id="spot-map"
+          type="text"
+          placeholder="GoogleマップのURL（任意）"
+          style="
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          "
+        />
+        <input
+          id="spot-image"
+          type="file"
+          accept="image/*"
+          style="width: calc(100% - 24px); margin-bottom: 10px"
+        />
+
+        <!-- 👇 IDを spot-recommendation に変更 -->
+        <select
+          id="spot-recommendation"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          "
+        >
+          <option value="5">⭐⭐⭐⭐⭐ 激推し！ (5)</option>
+          <option value="4">⭐⭐⭐⭐ 行きたい (4)</option>
+          <option value="3">⭐⭐⭐ 普通 (3)</option>
+          <option value="2">⭐⭐ 気になる (2)</option>
+          <option value="1">⭐ ついでがあれば (1)</option>
+        </select>
+
+        <button
+          onclick="addSpot()"
+          style="width: 100%; padding: 12px; background: #ff9800; color: white"
+        >
+          ＋ 候補を追加
+        </button>
+      </section>
+
+      <section class="card">
+        <h2>🏨 ホテル</h2>
+        <div id="hotel"></div>
+      </section>
+
+      <section class="card">
+        <h2>🌤 天気</h2>
+        <div id="weather">読み込み中...</div>
+      </section>
+
+      <section class="card">
+        <h2>💰 費用</h2>
+        <div id="expense-list"></div>
+        <hr />
+        <div id="total-expense"></div>
+        <hr />
+        <input id="expense-name" type="text" placeholder="項目名" />
+        <input id="expense-price" type="number" placeholder="金額" />
+        <button id="expense-button" onclick="addExpense()">＋追加</button>
+      </section>
+
+      <section class="card">
+        <h2>🧳 持ち物</h2>
+        <div id="packing-list"></div>
+        <hr />
+
+        <!-- 持ち物追加フォーム -->
+        <input
+          id="packing-name"
+          type="text"
+          placeholder="持ち物の名前（例：モバイルバッテリー）"
+          style="
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          "
+        />
+        <select
+          id="packing-importance"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          "
+        >
+          <option value="5">⭐⭐⭐⭐⭐ 絶対必要！ (5)</option>
+          <option value="4">⭐⭐⭐⭐ 必要 (4)</option>
+          <option value="3" selected>⭐⭐⭐ 普通 (3)</option>
+          <option value="2">⭐⭐ あれば便利 (2)</option>
+          <option value="1">⭐ 余裕があれば (1)</option>
+        </select>
+        <button
+          onclick="addPackingItem()"
+          style="width: 100%; padding: 12px; background: #4caf50; color: white"
+        >
+          ＋ 持ち物を追加
+        </button>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
